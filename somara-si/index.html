@@ -11,7 +11,7 @@
   <link rel="preload" href="assets/fonts/pinyon-script-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/caveat-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts.css">
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css?v=3">
   <script>try { if (localStorage.getItem('somara-lang') === 'sl') document.documentElement.lang = 'sl'; } catch (e) {}</script>
 </head>
 <body>
@@ -59,9 +59,11 @@
     <!-- Hero -->
     <section class="hero">
       <div class="hero__media">
-        <video class="hero__video" autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback poster="assets/posters/hero.jpg" aria-hidden="true" tabindex="-1">
+        <video class="hero__video" autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback poster="assets/posters/hero-start.jpg" aria-hidden="true" tabindex="-1">
           <source src="assets/video/hero.mp4" type="video/mp4">
         </video>
+        <!-- First frame of the loop on top of the video: covers iOS's play button until the loop really plays -->
+        <img class="hero__still" src="assets/posters/hero-start.jpg" width="360" height="640" alt="" aria-hidden="true">
       </div>
       <div class="hero__content">
         <h1 class="hero__name">Somara</h1>
@@ -422,6 +424,6 @@
 
   <p class="demo-badge" role="note"><span data-lang="en">Demo preview</span><span data-lang="sl">Demo predogled</span></p>
 
-  <script src="script.js?v=2"></script>
+  <script src="script.js?v=3"></script>
 </body>
 </html>

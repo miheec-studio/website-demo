@@ -149,6 +149,11 @@ html[lang="sl"] .lang [data-opt="sl"] { opacity: 1; text-decoration: underline; 
 }
 .hero__media { position: absolute; inset: 0; }
 .hero__video { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+.hero__still {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  pointer-events: none; transition: opacity .5s ease;
+}
+.hero__media--playing .hero__still { opacity: 0; }
 /* iOS shows a big play button when autoplay is blocked (Low Power Mode, in-app browsers): hide it */
 .hero__video::-webkit-media-controls,
 .hero__video::-webkit-media-controls-panel,

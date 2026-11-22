@@ -56,11 +56,20 @@
   } else if (hero) {
     hero.muted = true;
     hero.defaultMuted = true;
+    // The still image on top fades out only once frames are really moving
+    // (also covers a video that started before this script ran)
+    var revealVideo = function () {
+      if (!hero.paused && hero.currentTime > 0) hero.parentNode.classList.add('hero__media--playing');
+    };
+    hero.addEventListener('playing', revealVideo);
+    hero.addEventListener('timeupdate', revealVideo);
+    revealVideo();
     var gestures = ['touchstart', 'touchend', 'pointerdown', 'click', 'keydown'];
     var stopWaiting = function () {
       gestures.forEach(function (name) { document.removeEventListener(name, playOnGesture, true); });
     };
     var playOnGesture = function () {
+      if (hero.paused) hero.currentTime = 0; // start from the first frame, which the still image shows
       var attempt = hero.play();
       if (attempt && attempt.then) attempt.then(stopWaiting, function () { /* still blocked: keep waiting */ });
       else stopWaiting();
