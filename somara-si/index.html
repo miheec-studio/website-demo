@@ -84,11 +84,12 @@
     <!-- Hero -->
     <section class="hero">
       <div class="hero__media">
-        <video class="hero__video" autoplay muted loop playsinline preload="auto" poster="assets/posters/hero-veles-ritual.jpg" aria-hidden="true" tabindex="-1">
-          <source src="assets/video/hero-veles-ritual.mp4" type="video/mp4">
+        <!-- Slow-motion loop; it starts at 3s (a calm frame), the repeat point lies inside her movement -->
+        <video class="hero__video" autoplay muted loop playsinline preload="auto" poster="assets/posters/hero-veles-slow.jpg" data-start="3" aria-hidden="true" tabindex="-1">
+          <source src="assets/video/hero-veles-slow.mp4" type="video/mp4">
         </video>
-        <!-- First frame of the loop on top of the video: covers iOS's play button until the loop really plays -->
-        <img class="hero__still" src="assets/posters/hero-veles-ritual.jpg" width="720" height="1280" alt="" aria-hidden="true">
+        <!-- The start frame on top of the video: covers iOS's play button until the loop really plays -->
+        <img class="hero__still" src="assets/posters/hero-veles-slow.jpg" width="720" height="1280" alt="" aria-hidden="true">
       </div>
       <div class="hero__content">
         <h1 class="hero__name">Somara</h1>
@@ -449,6 +450,6 @@
 
   <p class="demo-badge" role="note"><span data-lang="en">Demo preview</span><span data-lang="sl">Demo predogled</span></p>
 
-  <script src="script.js?v=5"></script>
+  <script src="script.js?v=6"></script>
 </body>
 </html>

@@ -91,10 +91,15 @@
   } else if (hero) {
     hero.muted = true;
     hero.defaultMuted = true;
-    // The still image on top fades out only once frames are really moving
+    // Begin at the calm frame the still image shows (data-start), not where the loop repeats
+    var start = parseFloat(hero.getAttribute('data-start')) || 0;
+    var toStart = function () { if (hero.currentTime < start) hero.currentTime = start; };
+    if (hero.readyState >= 1) toStart();
+    else hero.addEventListener('loadedmetadata', toStart, { once: true });
+    // The still image on top fades out only once frames are really moving from the start frame
     // (also covers a video that started before this script ran)
     var revealVideo = function () {
-      if (!hero.paused && hero.currentTime > 0) hero.parentNode.classList.add('hero__media--playing');
+      if (!hero.paused && hero.currentTime > start) hero.parentNode.classList.add('hero__media--playing');
     };
     hero.addEventListener('playing', revealVideo);
     hero.addEventListener('timeupdate', revealVideo);
@@ -104,7 +109,7 @@
       gestures.forEach(function (name) { document.removeEventListener(name, playOnGesture, true); });
     };
     var playOnGesture = function () {
-      if (hero.paused) hero.currentTime = 0; // start from the first frame, which the still image shows
+      if (hero.paused) hero.currentTime = start; // start from the frame the still image shows
       var attempt = hero.play();
       if (attempt && attempt.then) attempt.then(stopWaiting, function () { /* still blocked: keep waiting */ });
       else stopWaiting();
