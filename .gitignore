@@ -1,0 +1,8 @@
+# Everything committed here is public: the repo is public and GitHub Pages serves every file.
+# Only finished customer websites go to GitHub. These stay on this computer:
+_source/
+TRACKER.md
+CLAUDE.md
+fetch.sh
+*.part.mp4
+.DS_Store
