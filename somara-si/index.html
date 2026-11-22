@@ -11,7 +11,7 @@
   <link rel="preload" href="assets/fonts/pinyon-script-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/caveat-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2">
   <script>try { if (localStorage.getItem('somara-lang') === 'sl') document.documentElement.lang = 'sl'; } catch (e) {}</script>
 </head>
 <body>
@@ -59,7 +59,7 @@
     <!-- Hero -->
     <section class="hero">
       <div class="hero__media">
-        <video class="hero__video" autoplay muted loop playsinline preload="auto" poster="assets/posters/hero.jpg" aria-hidden="true">
+        <video class="hero__video" autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback poster="assets/posters/hero.jpg" aria-hidden="true" tabindex="-1">
           <source src="assets/video/hero.mp4" type="video/mp4">
         </video>
       </div>
@@ -288,8 +288,8 @@
           <div>
             <p class="eyebrow">#thoughts</p>
             <h2 class="h2"><span data-lang="en">Thoughts</span><span data-lang="sl">Misli</span></h2>
-            <p data-lang="en">Little reflections from her Instagram: on feathers and freedom, and on how we used to wonder.</p>
-            <p data-lang="sl">Drobne misli z njenega Instagrama: o peresih in svobodi ter o tem, kako smo se nekoč spraševali.</p>
+            <p data-lang="en">Small reflections on feathers and freedom, and on how we used to wonder.</p>
+            <p data-lang="sl">Drobne misli o peresih in svobodi ter o tem, kako smo se nekoč spraševali.</p>
           </div>
           <div class="scroller-nav">
             <button class="round-btn" type="button" data-scroll="-1" aria-controls="cards" aria-label="Previous"><svg class="icon"><use href="#i-left"/></svg></button>
@@ -422,6 +422,6 @@
 
   <p class="demo-badge" role="note"><span data-lang="en">Demo preview</span><span data-lang="sl">Demo predogled</span></p>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=2"></script>
 </body>
 </html>

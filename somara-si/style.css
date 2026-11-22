@@ -148,7 +148,11 @@ html[lang="sl"] .lang [data-opt="sl"] { opacity: 1; text-decoration: underline; 
   background: var(--forest-900); color: var(--cream);
 }
 .hero__media { position: absolute; inset: 0; }
-.hero__video { width: 100%; height: 100%; object-fit: cover; }
+.hero__video { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+/* iOS shows a big play button when autoplay is blocked (Low Power Mode, in-app browsers): hide it */
+.hero__video::-webkit-media-controls,
+.hero__video::-webkit-media-controls-panel,
+.hero__video::-webkit-media-controls-start-playback-button { display: none !important; -webkit-appearance: none; }
 .hero__media::after {
   content: ""; position: absolute; inset: 0;
   background: linear-gradient(180deg, rgba(23, 38, 31, .45) 0%, rgba(23, 38, 31, 0) 22%,

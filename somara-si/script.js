@@ -46,11 +46,31 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // Hero loop stays still for people who prefer reduced motion
+  // Hero loop: plays muted on its own. iPhones in Low Power Mode and some in-app browsers
+  // (Instagram, Facebook) block autoplay; then it starts on the first touch instead.
+  // It stays still for people who prefer reduced motion.
   var hero = document.querySelector('.hero__video');
   if (hero && reduceMotion.matches) {
     hero.removeAttribute('autoplay');
     hero.pause();
+  } else if (hero) {
+    hero.muted = true;
+    hero.defaultMuted = true;
+    var gestures = ['touchstart', 'touchend', 'pointerdown', 'click', 'keydown'];
+    var stopWaiting = function () {
+      gestures.forEach(function (name) { document.removeEventListener(name, playOnGesture, true); });
+    };
+    var playOnGesture = function () {
+      var attempt = hero.play();
+      if (attempt && attempt.then) attempt.then(stopWaiting, function () { /* still blocked: keep waiting */ });
+      else stopWaiting();
+    };
+    var first = hero.play();
+    if (first && first.catch) {
+      first.catch(function () {
+        gestures.forEach(function (name) { document.addEventListener(name, playOnGesture, { capture: true, passive: true }); });
+      });
+    }
   }
 
   // Only one music video plays at a time
