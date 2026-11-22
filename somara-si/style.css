@@ -36,7 +36,11 @@ img, video { display: block; max-width: 100%; }
 img { height: auto; }
 a { color: inherit; }
 p { margin: 0 0 1em; }
-:focus-visible { outline: 2px solid var(--rose-300); outline-offset: 3px; }
+/* Keyboard focus ring: plum on light sections, rose on dark ones (both at least 3:1) */
+:focus-visible { outline: 2px solid var(--plum); outline-offset: 3px; }
+.skip:focus-visible,
+.nav :focus-visible, .hero :focus-visible, .music :focus-visible,
+.events :focus-visible, .contact :focus-visible, .footer :focus-visible { outline-color: var(--rose-300); }
 
 /* Language switch: only the active language is shown */
 html[lang="en"] [data-lang="sl"],
@@ -136,10 +140,12 @@ html[lang="sl"] .lang [data-opt="sl"] { opacity: 1; text-decoration: underline; 
 .nav__toggle .icon { width: 26px; height: 26px; }
 .nav__toggle .icon--close, .nav--open .nav__toggle .icon--menu { display: none; }
 .nav--open .nav__toggle .icon--close { display: block; }
-.nav--open .nav__menu {
-  position: fixed; inset: 60px 0 0;
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
-  background: var(--forest-950);
+@media (max-width: 899px) {
+  .nav--open .nav__menu {
+    position: fixed; inset: 60px 0 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+    background: var(--forest-950);
+  }
 }
 .nav__menu a { font-family: var(--font-hand); font-size: 2.3rem; text-decoration: none; padding: 4px 18px; }
 
@@ -148,6 +154,7 @@ html[lang="sl"] .lang [data-opt="sl"] { opacity: 1; text-decoration: underline; 
   position: relative; overflow: hidden;
   display: grid; align-items: end;
   min-height: 100vh; min-height: 100svh;
+  padding-top: 64px; /* content never slides under the top bar */
   background: var(--forest-900); color: var(--cream);
 }
 .hero__media { position: absolute; inset: 0; }
@@ -176,6 +183,16 @@ html[lang="sl"] .lang [data-opt="sl"] { opacity: 1; text-decoration: underline; 
 .hero__roles { margin: 6px 0 12px; font-family: var(--font-hand); font-size: 1.75rem; line-height: 1.2; color: var(--rose-200); }
 .hero__lead { margin: 0 0 26px; font-style: italic; font-size: 1.22rem; color: rgba(246, 241, 231, .92); }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* Phones held sideways: a compact hero that fits one screen below the top bar */
+@media (max-width: 899px) and (max-height: 520px) and (orientation: landscape) {
+  .hero { align-items: center; padding-top: 60px; }
+  .hero__content { padding: 10px 20px 14px; }
+  .hero__name { font-size: clamp(3rem, 17vh, 4.4rem); }
+  .hero__roles { margin: 2px 0 6px; font-size: 1.35rem; }
+  .hero__lead { margin-bottom: 14px; font-size: 1.05rem; }
+  .hero__actions .btn { min-height: 44px; padding: 8px 18px; }
+}
 
 /* ---------- About ---------- */
 .about__grid { display: grid; gap: 44px; }
@@ -275,6 +292,8 @@ html[lang="sl"] .lang [data-opt="sl"] { opacity: 1; text-decoration: underline; 
   background: transparent; color: var(--forest-900); cursor: pointer;
 }
 .round-btn:hover { background: rgba(23, 38, 31, .08); }
+.round-btn[aria-disabled="true"] { opacity: .35; cursor: default; }
+.round-btn[aria-disabled="true"]:hover { background: transparent; }
 .round-btn .icon { width: 22px; height: 22px; }
 .thoughts .swipe-hint { color: var(--forest-800); }
 
@@ -379,6 +398,15 @@ html[lang="sl"] .lang [data-opt="sl"] { opacity: 1; text-decoration: underline; 
   .corner__grid { grid-template-columns: 1fr 1fr; align-items: center; gap: 72px; }
 
   .event-list { grid-template-columns: repeat(3, 1fr); gap: 22px; }
+}
+
+/* Wide but short screens (large phones sideways, small laptop windows): compact hero */
+@media (min-width: 900px) and (max-height: 600px) {
+  .hero { gap: 40px; padding-top: 84px; padding-bottom: 24px; }
+  .hero__name { font-size: clamp(3.4rem, 20vh, 6rem); }
+  .hero__roles { margin: 2px 0 8px; font-size: 1.45rem; }
+  .hero__lead { margin-bottom: 16px; }
+  .hero__media { max-height: calc(100vh - 120px); }
 }
 
 @media (prefers-reduced-motion: reduce) {

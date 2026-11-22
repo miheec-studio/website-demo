@@ -7,12 +7,37 @@
   <title>Somara · songwriter, singer, artist</title>
   <meta name="description" content="Somara: Slovenian songwriter, singer and artist. Live-looped music blending natural and electronic sounds.">
   <meta name="theme-color" content="#17261f">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='88'%3E%F0%9F%AA%B6%3C/text%3E%3C/svg%3E">
+  <!-- Link preview when the link is shared (Instagram DM, WhatsApp, Messenger...) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://miheec-studio.github.io/website-demo/somara-si/">
+  <meta property="og:title" content="Somara · songwriter, singer, artist">
+  <meta property="og:description" content="Live-looped music, blending natural and electronic sounds. Sound therapy, sound meditations and workshops.">
+  <meta property="og:image" content="https://miheec-studio.github.io/website-demo/somara-si/assets/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Somara: songwriter, singer, artist">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="sl_SI">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="preload" href="assets/fonts/pinyon-script-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/caveat-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="fonts.css">
-  <link rel="stylesheet" href="style.css?v=4">
-  <script>try { if (localStorage.getItem('somara-lang') === 'sl') document.documentElement.lang = 'sl'; } catch (e) {}</script>
+  <link rel="stylesheet" href="style.css?v=5">
+  <script>
+    // Language before first paint: the visitor's own choice, else Slovenian for Slovenian-language devices
+    (function () {
+      var lang = null;
+      try { lang = localStorage.getItem('somara-lang'); } catch (e) {}
+      if (lang !== 'sl' && lang !== 'en') {
+        var prefs = navigator.languages || [navigator.language || ''];
+        lang = 'en';
+        for (var i = 0; i < prefs.length; i++) { if (/^sl(-|$)/i.test(prefs[i])) { lang = 'sl'; break; } }
+      }
+      document.documentElement.lang = lang;
+    })();
+  </script>
 </head>
 <body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -34,11 +59,11 @@
     <symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
   </svg>
 
-  <a class="skip" href="#about"><span data-lang="en">Skip to content</span><span data-lang="sl">Preskoči na vsebino</span></a>
+  <a class="skip" href="#about"><span data-lang="en">Skip to content</span><span data-lang="sl">Preskočite na vsebino</span></a>
 
   <header class="nav" id="nav">
     <a class="nav__logo" href="#top" aria-label="Somara">Somara</a>
-    <nav class="nav__menu" id="menu" aria-label="Menu">
+    <nav class="nav__menu" id="menu" aria-label="Menu" data-label-en="Menu" data-label-sl="Meni">
       <a href="#about"><span data-lang="en">About</span><span data-lang="sl">O Somari</span></a>
       <a href="#music"><span data-lang="en">Music</span><span data-lang="sl">Glasba</span></a>
       <a href="#offerings"><span data-lang="en">Offerings</span><span data-lang="sl">Ponudba</span></a>
@@ -47,8 +72,8 @@
       <a href="#contact"><span data-lang="en">Contact</span><span data-lang="sl">Kontakt</span></a>
     </nav>
     <div class="nav__right">
-      <button class="lang" id="langToggle" type="button" aria-label="Preklopi v slovenščino"><span data-opt="sl">SL</span> | <span data-opt="en">EN</span></button>
-      <button class="nav__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu">
+      <button class="lang" id="langToggle" type="button" aria-label="Preklopite v slovenščino" data-label-en="Preklopite v slovenščino" data-label-sl="Switch to English"><span data-opt="sl">SL</span> | <span data-opt="en">EN</span></button>
+      <button class="nav__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu" data-label-en="Menu" data-label-sl="Meni">
         <svg class="icon icon--menu"><use href="#i-menu"/></svg>
         <svg class="icon icon--close"><use href="#i-close"/></svg>
       </button>
@@ -59,11 +84,11 @@
     <!-- Hero -->
     <section class="hero">
       <div class="hero__media">
-        <video class="hero__video" autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback poster="assets/posters/hero-start.jpg" aria-hidden="true" tabindex="-1">
-          <source src="assets/video/hero.mp4" type="video/mp4">
+        <video class="hero__video" autoplay muted loop playsinline preload="auto" poster="assets/posters/hero-veles.jpg" aria-hidden="true" tabindex="-1">
+          <source src="assets/video/hero-veles.mp4" type="video/mp4">
         </video>
         <!-- First frame of the loop on top of the video: covers iOS's play button until the loop really plays -->
-        <img class="hero__still" src="assets/posters/hero-start.jpg" width="360" height="640" alt="" aria-hidden="true">
+        <img class="hero__still" src="assets/posters/hero-veles.jpg" width="720" height="1280" alt="" aria-hidden="true">
       </div>
       <div class="hero__content">
         <h1 class="hero__name">Somara</h1>
@@ -73,12 +98,12 @@
         </p>
         <p class="hero__lead">
           <span data-lang="en">Live-looped music, blending natural and electronic sounds.</span>
-          <span data-lang="sl">Glasba, ustvarjena z živim loopingom: preplet naravnih in elektronskih zvokov.</span>
+          <span data-lang="sl">Glasba, ustvarjena z live loopingom: preplet naravnih in elektronskih zvokov.</span>
         </p>
         <div class="hero__actions">
           <a class="btn btn--rose" href="https://youtube.com/@somara_si" target="_blank" rel="noopener">
             <svg class="icon"><use href="#i-play"/></svg>
-            <span data-lang="en">Listen on YouTube</span><span data-lang="sl">Poslušaj na YouTubu</span>
+            <span data-lang="en">Listen on YouTube</span><span data-lang="sl">Poslušajte na YouTubu</span>
           </a>
           <a class="btn btn--ghost" href="#offerings">
             <span data-lang="en">Sound therapy &amp; workshops</span><span data-lang="sl">Zvočna terapija in delavnice</span>
@@ -92,9 +117,9 @@
       <div class="wrap about__grid">
         <div class="about__photos">
           <img class="about__main" src="assets/img/portrait.jpg" width="1440" height="1440" loading="lazy"
-               alt="Somara in warm sunlight, resting her chin on her knee">
+               alt="Somara in warm sunlight, resting her chin on her knee" data-alt-sl="Somara v toplem soncu, z brado naslonjeno na koleno">
           <img class="about__small" src="assets/img/flower-crown.jpg" width="750" height="1000" loading="lazy"
-               alt="Somara wearing a crown of branches and red roses">
+               alt="Somara wearing a crown of branches and red roses" data-alt-sl="Somara z venčkom iz vej in rdečih vrtnic">
           <svg class="icon about__feather" aria-hidden="true"><use href="#i-feather"/></svg>
         </div>
         <div class="about__text">
@@ -105,7 +130,7 @@
             <p>Many of the sounds come straight from the forest: her steps, the rustle of leaves, the touch of trees. Her songs draw on Slavic folk tradition and mythology, from ritual calls for Vesna and Morana to the forest spirit Leshy, and on mantras she carried home from Nepal.</p>
           </div>
           <div data-lang="sl">
-            <p>Somara je slovenska kantavtorica, pevka in umetnica. Večina njene glasbe nastane z živim loopingom: glas, dih in inštrumenti se nalagajo v trenutku, pogosto improvizirano in neplanirano.</p>
+            <p>Somara je slovenska kantavtorica, pevka in umetnica. Večina njene glasbe nastane z live loopingom: glas, dih in inštrumenti se nalagajo v trenutku, pogosto improvizirano in neplanirano.</p>
             <p>Veliko zvokov prihaja naravnost iz gozda: njeni koraki, šelestenje listja, dotik dreves. Njene pesmi črpajo iz slovanskega ljudskega izročila in mitologije, od obrednih klicev Vesni in Morani do gozdnega duha Leshyja, ter iz manter, ki jih je prinesla domov iz Nepala.</p>
           </div>
           <blockquote class="quote">
@@ -127,7 +152,7 @@
           <p data-lang="sl">Najnovejše najprej. Pritisnite play in vklopite zvok.</p>
         </div>
 
-        <ul class="videos" aria-label="Videos">
+        <ul class="videos" aria-label="Videos" data-label-en="Videos" data-label-sl="Videi">
           <li class="vcard">
             <div class="vcard__frame">
               <video controls preload="none" playsinline poster="assets/posters/grip.jpg"><source src="assets/video/grip.mp4" type="video/mp4"></video>
@@ -142,7 +167,7 @@
             </div>
             <p class="vcard__date"><span data-lang="en">June 2026 · excerpt</span><span data-lang="sl">junij 2026 · odlomek</span></p>
             <h3 class="vcard__title"><span data-lang="en">Bela ptica (White Bird)</span><span data-lang="sl">Bela ptica</span></h3>
-            <p class="vcard__text"><span data-lang="en">The white bird appears through sound. Live looping improvisation: voice, breath and instruments.</span><span data-lang="sl">Skozi zvok se pojavi bela ptica. Improvizacija z živim loopingom: glas, dih in inštrumenti.</span></p>
+            <p class="vcard__text"><span data-lang="en">The white bird appears through sound. Live looping improvisation: voice, breath and instruments.</span><span data-lang="sl">Skozi zvok se pojavi bela ptica. Live looping improvizacija: glas, dih in inštrumenti.</span></p>
           </li>
           <li class="vcard">
             <div class="vcard__frame">
@@ -157,7 +182,7 @@
               <video controls preload="none" playsinline poster="assets/posters/vesna.jpg"><source src="assets/video/vesna.mp4" type="video/mp4"></video>
             </div>
             <p class="vcard__date"><span data-lang="en">March 2026</span><span data-lang="sl">marec 2026</span></p>
-            <h3 class="vcard__title"><span data-lang="en">Vesna · The Earth Breathes Again</span><span data-lang="sl">Vesna · Zemlja znova zadiha</span></h3>
+            <h3 class="vcard__title">Vesna · The Earth Breathes Again</h3>
             <p class="vcard__text"><span data-lang="en">A ritual call for Vesna, goddess of spring, of rebirth and returning life.</span><span data-lang="sl">Obredni klic Vesni, boginji pomladi, ponovnega rojstva in vračajočega se življenja.</span></p>
           </li>
           <li class="vcard">
@@ -165,7 +190,7 @@
               <video controls preload="none" playsinline poster="assets/posters/morana.jpg"><source src="assets/video/morana.mp4" type="video/mp4"></video>
             </div>
             <p class="vcard__date"><span data-lang="en">January 2026</span><span data-lang="sl">januar 2026</span></p>
-            <h3 class="vcard__title"><span data-lang="en">Morana · The World Exhales</span><span data-lang="sl">Morana · Svet izdihne</span></h3>
+            <h3 class="vcard__title">Morana · The World Exhales</h3>
             <p class="vcard__text"><span data-lang="en">A ritual call for Morana, goddess of winter, endings and decay.</span><span data-lang="sl">Obredni klic Morani, boginji zime, koncev in razkroja.</span></p>
           </li>
           <li class="vcard">
@@ -192,7 +217,7 @@
               </div>
             </li>
             <li class="release">
-              <img class="release__cover" src="assets/posters/cover-lisica.jpg" width="480" height="480" loading="lazy" alt="Lisica cover art: a figure in a purple forest">
+              <img class="release__cover" src="assets/posters/cover-lisica.jpg" width="480" height="480" loading="lazy" alt="Lisica cover art: a figure in a purple forest" data-alt-sl="Naslovnica skladbe Lisica: postava v vijoličnem gozdu">
               <div>
                 <h4>Lisica</h4>
                 <p class="release__meta"><span data-lang="en">single · 2025</span><span data-lang="sl">singel · 2025</span></p>
@@ -201,7 +226,7 @@
               </div>
             </li>
             <li class="release">
-              <img class="release__cover" src="assets/posters/cover-cokle.jpg" width="480" height="480" loading="lazy" alt="Cokle title card">
+              <img class="release__cover" src="assets/posters/cover-cokle.jpg" width="480" height="480" loading="lazy" alt="Cokle title card" data-alt-sl="Naslovna slika skladbe Cokle">
               <div>
                 <h4>Cokle</h4>
                 <p class="release__meta"><span data-lang="en">2025 · on YouTube</span><span data-lang="sl">2025 · na YouTubu</span></p>
@@ -210,7 +235,7 @@
               </div>
             </li>
             <li class="release">
-              <img class="release__cover" src="assets/posters/cover-brezmiru.jpg" width="480" height="480" loading="lazy" alt="Brez miru cover art: an etched drawing of a woman in folk dress">
+              <img class="release__cover" src="assets/posters/cover-brezmiru.jpg" width="480" height="480" loading="lazy" alt="Brez miru cover art: an etched drawing of a woman in folk dress" data-alt-sl="Naslovnica skladbe Brez miru: grafična risba ženske v ljudski noši">
               <div>
                 <h4><span data-lang="en">Brez miru (Without Peace)</span><span data-lang="sl">Brez miru</span></h4>
                 <p class="release__meta"><span data-lang="en">single · 2025</span><span data-lang="sl">singel · 2025</span></p>
@@ -243,7 +268,7 @@
             </blockquote>
           </div>
           <img class="offerings__art" src="assets/img/altar.jpg" width="900" height="1200" loading="lazy"
-               alt="A small altar in the grass with a candle, crystals, flowers and a little blue bowl">
+               alt="A small altar in the grass with a candle, crystals, flowers and a little blue bowl" data-alt-sl="Majhen oltar v travi s svečo, kristali, cvetjem in modro skodelico">
         </div>
 
         <div class="offer-grid">
@@ -294,8 +319,8 @@
             <p data-lang="sl">Drobne misli o peresih in svobodi ter o tem, kako smo se nekoč spraševali.</p>
           </div>
           <div class="scroller-nav">
-            <button class="round-btn" type="button" data-scroll="-1" aria-controls="cards" aria-label="Previous"><svg class="icon"><use href="#i-left"/></svg></button>
-            <button class="round-btn" type="button" data-scroll="1" aria-controls="cards" aria-label="Next"><svg class="icon"><use href="#i-right"/></svg></button>
+            <button class="round-btn" type="button" data-scroll="-1" aria-controls="cards" aria-label="Previous" data-label-en="Previous" data-label-sl="Prejšnja"><svg class="icon"><use href="#i-left"/></svg></button>
+            <button class="round-btn" type="button" data-scroll="1" aria-controls="cards" aria-label="Next" data-label-en="Next" data-label-sl="Naslednja"><svg class="icon"><use href="#i-right"/></svg></button>
           </div>
         </div>
         <ul class="cards" id="cards" aria-label="#thoughts">
@@ -347,11 +372,11 @@
         </div>
         <div class="corner__photos">
           <figure>
-            <img src="assets/img/music-corner.jpg" width="960" height="1200" loading="lazy" alt="Somara in her music corner, surrounded by singing bowls and instruments">
+            <img src="assets/img/music-corner.jpg" width="960" height="1200" loading="lazy" alt="Somara in her music corner, surrounded by singing bowls and instruments" data-alt-sl="Somara v svojem glasbenem kotičku med pojočimi posodami in inštrumenti">
             <figcaption><span data-lang="en">My music corner, winter edition</span><span data-lang="sl">Moj glasbeni kotiček, zimska izdaja</span></figcaption>
           </figure>
           <figure>
-            <img src="assets/img/looping-station.jpg" width="720" height="1280" loading="lazy" alt="Somara singing at her looping station with singing bowls in front of her">
+            <img src="assets/img/looping-station.jpg" width="720" height="1280" loading="lazy" alt="Somara singing at her looping station with singing bowls in front of her" data-alt-sl="Somara poje ob svoji looping postaji, pred njo so pojoče posode">
             <figcaption><span data-lang="en">From the Bela ptica video</span><span data-lang="sl">Iz videa Bela ptica</span></figcaption>
           </figure>
         </div>
@@ -365,7 +390,7 @@
         <h2 class="h2"><span data-lang="en">Past events</span><span data-lang="sl">Pretekli dogodki</span></h2>
         <ul class="event-list">
           <li class="event">
-            <img class="event__img--top" src="assets/img/polarnost-poster.jpg" width="900" height="1200" loading="lazy" alt="Poster for Polarnost, a workshop and sound meditation with Damjan, Rebeka and Somara">
+            <img class="event__img--top" src="assets/img/polarnost-poster.jpg" width="900" height="1200" loading="lazy" alt="Poster for Polarnost, a workshop and sound meditation with Damjan, Rebeka and Somara" data-alt-sl="Plakat za Polarnost, delavnico in zvočno meditacijo z Damjanom, Rebeko in Somaro">
             <div class="event__body">
               <p class="event__date"><span data-lang="en">8 November 2026</span><span data-lang="sl">8. november 2026</span></p>
               <h3><span data-lang="en">Polarnost: workshop &amp; sound meditation</span><span data-lang="sl">Polarnost: delavnica in zvočna meditacija</span></h3>
@@ -375,7 +400,7 @@
             </div>
           </li>
           <li class="event">
-            <img src="assets/img/kolpa.jpg" width="1200" height="1200" loading="lazy" alt="The Kolpa river with green forest and summer clouds">
+            <img src="assets/img/kolpa.jpg" width="1200" height="1200" loading="lazy" alt="The Kolpa river with green forest and summer clouds" data-alt-sl="Reka Kolpa z zelenim gozdom in poletnimi oblaki">
             <div class="event__body">
               <p class="event__date"><span data-lang="en">August 2026</span><span data-lang="sl">avgust 2026</span></p>
               <h3>Guardians Festival</h3>
@@ -395,7 +420,7 @@
     <!-- Contact -->
     <section class="section contact" id="contact">
       <div class="wrap">
-        <img class="contact__art" src="assets/img/illustration.jpg" width="900" height="900" loading="lazy" alt="Etched illustration of Somara with a flower crown">
+        <img class="contact__art" src="assets/img/illustration.jpg" width="900" height="900" loading="lazy" alt="Etched illustration of Somara with a flower crown" data-alt-sl="Grafična ilustracija Somare s cvetnim venčkom">
         <p class="eyebrow"><span data-lang="en">Contact</span><span data-lang="sl">Kontakt</span></p>
         <h2 class="h2"><span data-lang="en">Get in touch</span><span data-lang="sl">Stopite v stik</span></h2>
         <p class="contact__text" data-lang="en">For sound sessions, workshops, collaborations or simply a hello, message Somara on Instagram.</p>
@@ -424,6 +449,6 @@
 
   <p class="demo-badge" role="note"><span data-lang="en">Demo preview</span><span data-lang="sl">Demo predogled</span></p>
 
-  <script src="script.js?v=3"></script>
+  <script src="script.js?v=5"></script>
 </body>
 </html>
