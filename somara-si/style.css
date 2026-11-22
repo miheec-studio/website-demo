@@ -112,9 +112,12 @@ html[lang="sl"] [data-lang="en"] { display: none !important; }
   background: rgba(23, 38, 31, .94);
   box-shadow: 0 1px 0 rgba(246, 241, 231, .08);
 }
-@supports (backdrop-filter: blur(8px)) {
-  .nav--solid { background: rgba(23, 38, 31, .82); backdrop-filter: blur(10px); }
+@supports ((backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px))) {
+  .nav--solid { background: rgba(23, 38, 31, .82); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
 }
+/* A blurred bar becomes the frame for the fixed menu inside it, which then collapses to 0 height.
+   So no blur while the menu is open. */
+.nav.nav--open { background: var(--forest-950); -webkit-backdrop-filter: none; backdrop-filter: none; }
 .nav__logo { font-family: var(--font-script); font-size: 2.1rem; line-height: 1; text-decoration: none; padding-top: 4px; }
 .nav__menu { display: none; }
 .nav__right { display: flex; align-items: center; }
