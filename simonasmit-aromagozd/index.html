@@ -24,7 +24,7 @@
   <link rel="preload" href="assets/fonts/sacramento-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/img/hero-gozd.jpg" as="image" fetchpriority="high">
   <link rel="stylesheet" href="fonts.css">
-  <link rel="stylesheet" href="style.css?v=1">
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -102,11 +102,18 @@
     <!-- About -->
     <section class="section about" id="o-meni">
       <div class="wrap about__grid">
+        <!-- Two photos taped into a field notebook, each with a hand-written note -->
         <div class="about__photos">
-          <img class="about__main" src="assets/img/simona.jpg" width="800" height="1000" loading="lazy"
-               alt="Simona Šmit, nasmejana, sedi na deblu starega bora">
-          <img class="about__small" src="assets/img/simona-gozd.jpg" width="641" height="800" loading="lazy"
-               alt="Simona sedi na z mahom poraslem kamnu sredi gozda">
+          <figure class="specimen specimen--a">
+            <img src="assets/img/simona.jpg" width="800" height="1000" loading="lazy"
+                 alt="Simona Šmit, nasmejana, sedi na deblu starega bora">
+            <figcaption aria-hidden="true">na starem boru</figcaption>
+          </figure>
+          <figure class="specimen specimen--b">
+            <img src="assets/img/simona-gozd.jpg" width="641" height="800" loading="lazy"
+                 alt="Simona sedi na z mahom poraslem kamnu sredi gozda">
+            <figcaption aria-hidden="true">na mahu sredi gozda</figcaption>
+          </figure>
           <svg class="about__tree" aria-hidden="true"><use href="#logo-tree"/></svg>
         </div>
         <div class="about__text">
