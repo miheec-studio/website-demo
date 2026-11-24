@@ -1,0 +1,548 @@
+/* Barbara Krašovec · Zavod Zlato življenje
+   Look: her own flyers. Warm cream photos from her shoot, a translucent white card laid over the photo,
+   letter-spaced capitals with a thin handwritten script, gold accents, and the pendulum (nihalo) she works with. */
+
+:root {
+  --linen: #faf6ef;
+  --sand: #f3ebdf;
+  --sand-2: #e6d9c6;
+  --white: #fffdf9;
+  --card: rgba(255, 252, 247, .8);
+  --gold: #b8893f;
+  --gold-deep: #85601f;
+  --gold-light: #e3c78f;
+  --ink: #3a2427;
+  --ink-soft: #66504c;
+  --night: #212338;
+  --night-2: #2c2f48;
+
+  --font-display: 'Marcellus', Georgia, 'Times New Roman', serif;
+  --font-script: 'Corinthia', 'Brush Script MT', cursive;
+  --font-body: 'Raleway', 'Helvetica Neue', Arial, sans-serif;
+
+  --wrap: 1180px;
+  --nav-h: 64px;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+body {
+  margin: 0;
+  background: var(--linen); color: var(--ink);
+  font: 400 1.0625rem/1.7 var(--font-body);
+  font-variant-numeric: lining-nums;
+  overflow-x: hidden;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+p { margin: 0 0 1em; }
+h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; line-height: 1.15; margin: 0; }
+ul { margin: 0; padding: 0; }
+
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.on-dark :focus-visible { outline-color: var(--gold-light); }
+
+.skip {
+  position: absolute; left: 12px; top: -70px; z-index: 100;
+  padding: 10px 16px; background: var(--ink); color: var(--white); text-decoration: none;
+}
+.skip:focus { top: 12px; }
+
+.icon {
+  width: 1.15em; height: 1.15em; flex: none;
+  fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+}
+
+.wrap { width: 100%; max-width: var(--wrap); margin: 0 auto; padding: 0 20px; }
+.section { padding: 80px 0; scroll-margin-top: var(--nav-h); }
+.section--sand { background: var(--sand); }
+
+/* Letter-spaced capitals, as on her price list ("ZAVOD ZLATO ŽIVLJENJE") */
+.caps {
+  font-family: var(--font-body); font-weight: 600; font-size: .78rem;
+  letter-spacing: .28em; text-transform: uppercase;
+}
+/* The thin handwritten word above a heading ("...v živo", "Sem Barbara") */
+.script {
+  display: block; font-family: var(--font-script); font-weight: 400;
+  font-size: 3.1rem; line-height: .9; color: var(--gold-deep); letter-spacing: 0;
+  text-transform: none; word-spacing: .12em;
+}
+.title { font-size: clamp(1.9rem, 5.6vw, 2.9rem); text-transform: uppercase; letter-spacing: .03em; }
+.head { text-align: center; max-width: 720px; margin: 0 auto 44px; }
+.head .script { margin-bottom: 6px; }
+.lead { font-size: 1.14rem; color: var(--ink-soft); }
+.head .lead { margin: 18px auto 0; }
+
+/* ---------- The pendulum (nihalo): thread, ring and a small cone that swings ---------- */
+.nihalo {
+  display: block; width: 22px; height: 64px; margin: 0 auto 18px; color: var(--gold);
+  transform-origin: 50% 0;
+  animation: swing 4.2s ease-in-out infinite alternate;
+}
+.nihalo--still { animation: none; }
+@keyframes swing { from { transform: rotate(-5deg); } to { transform: rotate(5deg); } }
+
+/* ---------- Buttons: plain rectangles with spaced capitals, like her flyers ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 48px; padding: 12px 22px;
+  border: 1px solid var(--ink); background: var(--ink); color: var(--white);
+  font: 600 .8rem/1.2 var(--font-body); letter-spacing: .2em; text-transform: uppercase;
+  text-decoration: none; cursor: pointer;
+  transition: background-color .25s, color .25s, border-color .25s;
+}
+.btn:hover { background: var(--gold-deep); border-color: var(--gold-deep); }
+.btn--line { background: transparent; color: var(--ink); }
+.btn--line:hover { background: var(--ink); color: var(--white); border-color: var(--ink); }
+.btn--gold { background: var(--gold-light); border-color: var(--gold-light); color: var(--ink); }
+.btn--gold:hover { background: var(--white); border-color: var(--white); }
+.btn--ghost { background: transparent; border-color: rgba(227, 199, 143, .6); color: var(--white); }
+.btn--ghost:hover { background: rgba(227, 199, 143, .15); border-color: var(--gold-light); }
+.btns { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* ---------- The translucent card laid over a photo (her signature) ---------- */
+.kartica {
+  position: relative;
+  background: var(--card);
+  border: 1px solid rgba(255, 255, 255, .75);
+  box-shadow: 0 24px 60px -30px rgba(58, 36, 39, .45);
+  padding: 30px 24px;
+}
+@supports ((backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px))) {
+  .kartica { background: rgba(255, 252, 247, .7); -webkit-backdrop-filter: blur(12px) saturate(1.05); backdrop-filter: blur(12px) saturate(1.05); }
+}
+
+/* Missing facts: visible placeholder for the owner to fill in */
+.todo {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 3px 12px; margin: 2px 0;
+  border: 1.5px dashed var(--gold-deep); background: rgba(227, 199, 143, .22); color: var(--gold-deep);
+  font: 500 .92rem/1.45 var(--font-body); letter-spacing: 0; text-transform: none;
+}
+.todo::before { content: "\270E"; }
+.on-dark .todo { border-color: var(--gold-light); color: var(--gold-light); background: rgba(227, 199, 143, .1); }
+
+/* ---------- Navigation ---------- */
+.nav {
+  position: fixed; inset: 0 0 auto; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  height: var(--nav-h); padding: 0 8px 0 20px;
+  color: var(--ink);
+  transition: background-color .3s, box-shadow .3s;
+}
+.nav--solid, .nav--open { background: rgba(250, 246, 239, .96); box-shadow: 0 1px 0 var(--sand-2); }
+@supports ((backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px))) {
+  .nav--solid { background: rgba(250, 246, 239, .84); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+}
+/* A blurred bar becomes the containing block of the fixed menu inside it, which would collapse it.
+   So no blur while the menu is open. */
+.nav.nav--open { background: var(--linen); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.nav__logo {
+  display: flex; flex-direction: column; line-height: 1; text-decoration: none; padding: 6px 0;
+}
+.nav__logo-name { font-family: var(--font-display); font-size: 1.04rem; letter-spacing: .2em; text-transform: uppercase; white-space: nowrap; }
+.nav__logo-sub { font-family: var(--font-script); font-size: 1.45rem; color: var(--gold-deep); margin-top: -1px; padding-left: 2px; }
+.nav__menu { display: none; }
+.nav__toggle {
+  display: grid; place-items: center; width: 48px; height: 48px;
+  background: none; border: 0; color: inherit; cursor: pointer;
+}
+.nav__toggle .icon { width: 26px; height: 26px; }
+.nav__toggle .icon--close, .nav--open .nav__toggle .icon--menu { display: none; }
+.nav--open .nav__toggle .icon--close { display: block; }
+@media (max-width: 899px) {
+  .nav--open .nav__menu {
+    position: fixed; inset: var(--nav-h) 0 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+    padding: 24px 20px 48px; overflow-y: auto;
+    background: var(--linen);
+  }
+  .nav__menu a { font-family: var(--font-display); font-size: 1.6rem; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; padding: 8px 18px; }
+  .nav__menu a[aria-current="page"] { color: var(--gold-deep); }
+  .nav__menu a[aria-current="page"]::after { content: ""; display: block; height: 1px; margin: 4px auto 0; width: 40px; background: var(--gold); }
+  .nav__menu .nav__cta { margin-top: 18px; font-family: var(--font-body); font-size: .85rem; letter-spacing: .2em; border: 1px solid var(--ink); padding: 14px 24px; }
+}
+
+/* ---------- Home hero: her photo full-bleed, the card laid over it ---------- */
+.hero {
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  min-height: 100vh; min-height: 100svh;
+  padding: calc(var(--nav-h) + 16px) 16px 54px;
+}
+.hero__media { position: absolute; inset: 0; }
+.hero__media img {
+  width: 100%; height: 100%; object-fit: cover; object-position: 50% 18%;
+  animation: hero-zoom 26s ease-out both;
+}
+@keyframes hero-zoom { from { transform: scale(1.06); } to { transform: scale(1); } }
+/* A soft cream veil at the top keeps the menu readable over the drapery */
+.hero__media::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(250, 246, 239, .55), rgba(250, 246, 239, 0) 22%);
+}
+.hero__card { position: relative; max-width: 460px; width: 100%; margin: 0 auto; text-align: center; padding: 26px 20px 24px; }
+/* The card hangs from a thin gold thread, like a pendulum */
+.hero__card::before {
+  content: ""; position: absolute; left: 50%; bottom: 100%; width: 1px; height: 40px;
+  background: linear-gradient(to top, var(--gold), rgba(184, 137, 63, 0));
+}
+.hero__brand { color: var(--ink-soft); margin: 0 0 4px; font-size: .7rem; }
+.hero__name { word-spacing: .12em; font-family: var(--font-script); font-size: 3rem; line-height: .95; color: var(--gold-deep); margin: 0 0 8px; }
+.hero h1 { font-size: clamp(1.55rem, 6.4vw, 2.35rem); text-transform: uppercase; letter-spacing: .05em; }
+.hero__sub { margin: 12px auto 18px; max-width: 32ch; color: var(--ink-soft); font-size: 1.02rem; line-height: 1.55; }
+.hero__meta { margin: 14px 0 0; color: var(--ink-soft); font-size: .64rem; }
+.hero .btns { justify-content: center; }
+.hero .btn { flex: 1 1 auto; }
+
+/* ---------- Subpage header: a photo band with the card on top (like her price list) ---------- */
+.page-head {
+  position: relative; overflow: hidden;
+  display: flex; align-items: flex-end; justify-content: center;
+  min-height: 78vh; min-height: 78svh;
+  padding: calc(var(--nav-h) + 30px) 16px 28px;
+}
+.page-head__media { position: absolute; inset: 0; }
+.page-head__media img { width: 100%; height: 100%; object-fit: cover; }
+.page-head__media::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(250, 246, 239, .55), rgba(250, 246, 239, 0) 25%);
+}
+.page-head .kartica { max-width: 560px; width: 100%; text-align: center; padding: 28px 22px; }
+.page-head .script { font-size: 4.2rem; margin-bottom: 8px; }
+.page-head h1 { font-size: clamp(1.4rem, 5.2vw, 2rem); text-transform: uppercase; letter-spacing: .12em; }
+.page-head p { margin: 14px auto 0; max-width: 46ch; color: var(--ink-soft); line-height: 1.6; }
+.page-head .caps { color: var(--ink-soft); font-size: .68rem; margin: 0 0 6px; }
+
+/* ---------- About ---------- */
+.about { display: grid; gap: 40px; }
+.about__media { position: relative; margin: 0 0 40px; }
+.about__media img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; object-position: 50% 30%; }
+.about__media .kartica {
+  position: absolute; left: 16px; right: 16px; bottom: -40px;
+  padding: 22px 20px; text-align: center;
+}
+.about__why-label { color: var(--gold-deep); margin: 0 0 8px; font-size: .68rem; }
+.about__why { font-family: var(--font-display); font-size: 1.24rem; line-height: 1.4; margin: 0; }
+.about__text .script { margin-bottom: 6px; }
+.about__text h2 { margin-bottom: 22px; }
+.about__text p { color: var(--ink-soft); }
+.about__text p.about__first { color: var(--ink); font-size: 1.14rem; }
+.creds { display: flex; flex-wrap: wrap; gap: 8px; margin: 26px 0 0; list-style: none; }
+.creds li { padding: 6px 12px; border: 1px solid var(--sand-2); background: var(--white); font-size: .82rem; letter-spacing: .06em; }
+
+/* ---------- What I do: photo tiles with a card label ---------- */
+.ways { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; list-style: none; }
+.way { position: relative; overflow: hidden; }
+.way a { display: block; text-decoration: none; color: var(--ink); }
+.way img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; transition: transform .6s ease; }
+.way a:hover img { transform: scale(1.04); }
+.way .kartica { position: absolute; left: 8px; right: 8px; bottom: 8px; padding: 12px 10px; text-align: center; }
+.way h3 { font-size: 1rem; text-transform: uppercase; letter-spacing: .08em; }
+.way__more { display: none; }
+.ways-note { text-align: center; margin: 28px 0 0; color: var(--ink-soft); font-size: .72rem; }
+
+/* ---------- How a session goes: steps hanging on a pendulum thread ---------- */
+.flows { display: grid; gap: 48px; }
+.flow .script { text-align: center; font-size: 3.4rem; margin-bottom: 20px; }
+.steps { list-style: none; position: relative; padding-left: 34px; counter-reset: step; }
+.steps::before { content: ""; position: absolute; left: 9px; top: 8px; bottom: 8px; width: 1px; background: var(--gold); }
+.steps li { position: relative; margin: 0 0 24px; counter-increment: step; }
+.steps li:last-child { margin-bottom: 0; }
+.steps li::before {
+  content: counter(step); position: absolute; left: -34px; top: 0;
+  display: grid; place-items: center; width: 19px; height: 19px;
+  background: var(--sand); border: 1px solid var(--gold); border-radius: 50%;
+  font: 600 .66rem/1 var(--font-body); color: var(--gold-deep);
+}
+.steps h4 { font-size: 1.08rem; text-transform: uppercase; letter-spacing: .08em; margin: 0 0 4px; }
+.steps p { margin: 0; color: var(--ink-soft); }
+.posvet { margin: 56px auto 0; max-width: 760px; text-align: center; background: var(--white); border: 1px solid var(--sand-2); padding: 30px 22px; }
+.posvet h3 { font-size: 1.4rem; text-transform: uppercase; letter-spacing: .06em; margin: 4px 0 12px; }
+.posvet p { color: var(--ink-soft); margin-bottom: 12px; }
+.posvet .price { font-family: var(--font-display); font-size: 1.6rem; color: var(--gold-deep); margin: 6px 0 4px; }
+.posvet .btns { justify-content: center; margin-top: 18px; }
+
+/* ---------- Hiška miru: three narrow frames, the card across them ---------- */
+.hiska { display: grid; gap: 28px; }
+.hiska__frames { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.hiska__frames img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.hiska__frames img:nth-child(2) { margin-top: 28px; }
+.hiska__text .script { margin-bottom: 6px; }
+.hiska__text h2 { margin-bottom: 20px; }
+.hiska__text p { color: var(--ink-soft); }
+.hiska__quote { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.45; color: var(--ink) !important; border-left: 1px solid var(--gold); padding-left: 18px; }
+.place { display: flex; gap: 10px; align-items: flex-start; margin: 22px 0 0; }
+.place .icon { color: var(--gold-deep); margin-top: 4px; }
+
+/* ---------- Kind words: cards over a soft photo ---------- */
+.odzivi { position: relative; overflow: hidden; padding: 88px 0; }
+.odzivi__bg { position: absolute; inset: -30px; }
+.odzivi__bg img { width: 100%; height: 100%; object-fit: cover; filter: blur(14px) saturate(.9); opacity: .55; }
+.odzivi__bg::after { content: ""; position: absolute; inset: 0; background: rgba(243, 235, 223, .55); }
+.odzivi .wrap { position: relative; }
+.quotes { columns: 1; column-gap: 16px; list-style: none; }
+.quote { break-inside: avoid; margin: 0 0 16px; padding: 26px 22px 20px; }
+.quote::before { content: "\201C"; display: block; height: 30px; font-family: var(--font-display); font-size: 3.4rem; line-height: 1; color: var(--gold); }
+.quote p { margin: 0; font-style: italic; font-size: 1.04rem; line-height: 1.6; }
+.quote blockquote { margin: 0; }
+.quote figcaption { margin-top: 12px; color: var(--ink-soft); font-size: .66rem; }
+
+/* ---------- Price list (ponudba) ---------- */
+.menu-cols { display: grid; gap: 56px; }
+.menu-col .script { text-align: center; font-size: 3.6rem; margin-bottom: 18px; }
+.svc { list-style: none; border-top: 1px solid var(--sand-2); }
+.svc li { padding: 16px 0; border-bottom: 1px solid var(--sand-2); }
+.svc__row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.svc__name { font-weight: 600; font-size: .9rem; letter-spacing: .12em; text-transform: uppercase; }
+.svc__time { flex: none; font-family: var(--font-display); color: var(--gold-deep); white-space: nowrap; }
+.svc__desc { margin: 4px 0 0; color: var(--ink-soft); font-size: .98rem; line-height: 1.55; }
+.svc-note { margin: 18px 0 0; color: var(--ink-soft); font-size: .95rem; text-align: center; }
+.menu-foot { text-align: center; margin: 44px auto 0; max-width: 640px; }
+.menu-foot p { color: var(--ink-soft); font-size: .72rem; line-height: 2; }
+
+.offers { display: grid; gap: 16px; list-style: none; }
+.offer { background: var(--white); border: 1px solid var(--sand-2); padding: 28px 22px; display: flex; flex-direction: column; }
+.offer h3 { font-size: 1.2rem; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 10px; }
+.offer p { color: var(--ink-soft); margin-bottom: 12px; }
+.offer .price { font-family: var(--font-display); font-size: 1.35rem; color: var(--gold-deep); margin: auto 0 0; padding-top: 10px; border-top: 1px solid var(--sand-2); line-height: 1.4; }
+.offer .price small { display: block; font-family: var(--font-body); font-size: .86rem; color: var(--ink-soft); }
+.offer ul { list-style: none; margin: 0 0 14px; }
+.offer li { position: relative; padding-left: 18px; color: var(--ink-soft); margin-bottom: 4px; }
+.offer li::before { content: ""; position: absolute; left: 2px; top: .7em; width: 6px; height: 6px; border: 1px solid var(--gold); transform: rotate(45deg); }
+
+.instruments { text-align: center; max-width: 760px; margin: 0 auto; }
+.instruments p { font-family: var(--font-display); font-size: 1.3rem; line-height: 1.6; }
+
+/* Split: photo on one side, text on the other */
+.split { display: grid; gap: 32px; align-items: center; }
+.split__media img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+.split__text .script { margin-bottom: 6px; }
+.split__text h2 { margin-bottom: 20px; }
+.split__text p { color: var(--ink-soft); }
+.split__text .big { font-family: var(--font-display); font-size: 1.3rem; line-height: 1.45; color: var(--ink); }
+
+.ticks { list-style: none; margin: 6px 0 18px; }
+.ticks li { position: relative; padding-left: 22px; margin-bottom: 8px; color: var(--ink-soft); }
+.ticks li::before { content: ""; position: absolute; left: 3px; top: .65em; width: 7px; height: 7px; border: 1px solid var(--gold); transform: rotate(45deg); }
+.ticks strong { color: var(--ink); font-weight: 600; }
+
+/* Adoula: four pillars with line icons */
+.pillars { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 12px; list-style: none; text-align: center; margin: 8px 0 0; }
+.pillars .icon { width: 40px; height: 40px; margin: 0 auto 10px; color: var(--gold-deep); stroke-width: 1.1; }
+.pillars span { display: block; font-size: .74rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+
+.program { max-width: 860px; margin: 0 auto; text-align: center; background: var(--white); border: 1px solid var(--sand-2); padding: 36px 22px; }
+.program .caps { color: var(--gold-deep); }
+.program h2 { font-size: clamp(1.7rem, 5vw, 2.5rem); text-transform: uppercase; letter-spacing: .04em; margin: 8px 0 4px; }
+.program .script { font-size: 3.2rem; }
+.program__facts { display: grid; gap: 1px; margin: 26px 0; background: var(--sand-2); border: 1px solid var(--sand-2); }
+.program__facts div { background: var(--linen); padding: 18px 14px; }
+.program__facts strong { display: block; font-family: var(--font-display); font-weight: 400; font-size: 1.5rem; color: var(--gold-deep); line-height: 1.2; }
+.program__facts span { font-size: .95rem; color: var(--ink-soft); }
+.program .ticks { text-align: left; max-width: 520px; margin: 22px auto; }
+.program .btns { justify-content: center; }
+
+.pull { max-width: 820px; margin: 0 auto; text-align: center; }
+.pull p { font-family: var(--font-display); font-size: clamp(1.45rem, 4.4vw, 2.1rem); line-height: 1.35; margin: 0; }
+
+/* Events (delavnice) */
+.event { display: grid; background: var(--white); border: 1px solid var(--sand-2); }
+.event__media img { width: 100%; height: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 50% 25%; }
+.event__body { padding: 30px 22px; }
+.event .event__tag { display: inline-block; padding: 5px 12px; background: var(--ink); color: var(--white); font-size: .66rem; margin: 0 0 14px; }
+.event h3 { font-size: clamp(1.5rem, 5vw, 2.1rem); text-transform: uppercase; letter-spacing: .04em; margin: 0 0 2px; }
+.event .script { font-size: 2.7rem; margin: 0 0 16px; }
+.event p { color: var(--ink-soft); }
+.facts { list-style: none; display: grid; gap: 10px; margin: 18px 0 20px; }
+.facts li { display: flex; gap: 12px; align-items: flex-start; }
+.facts .icon { color: var(--gold-deep); margin-top: 4px; }
+.prices { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--sand-2); margin: 0 0 20px; text-align: center; }
+.prices div { padding: 14px 10px; }
+.prices div + div { border-left: 1px solid var(--sand-2); }
+.prices strong { display: block; font-family: var(--font-display); font-weight: 400; font-size: 1.7rem; color: var(--gold-deep); line-height: 1.2; }
+.prices span { font-size: .85rem; color: var(--ink-soft); }
+.event__lists { display: grid; gap: 4px 28px; }
+.event__lists h4 { margin: 8px 0 6px; font-size: .74rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+
+.cards3 { display: grid; gap: 16px; list-style: none; }
+.card3 { background: var(--white); border: 1px solid var(--sand-2); display: flex; flex-direction: column; }
+.card3 img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+.card3__body { padding: 24px 22px 26px; display: flex; flex-direction: column; flex: 1; }
+.card3 .caps { color: var(--gold-deep); font-size: .66rem; margin: 0 0 8px; }
+.card3 h3 { font-size: 1.3rem; text-transform: uppercase; letter-spacing: .05em; margin: 0 0 12px; }
+.card3 p { color: var(--ink-soft); }
+.card3 .last { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--sand-2); font-size: .95rem; margin-bottom: 0; }
+
+/* ---------- Contact band (on every page) ---------- */
+.contact { background: var(--night); color: var(--white); text-align: center; padding: 88px 0 72px; scroll-margin-top: var(--nav-h); }
+.contact .nihalo { color: var(--gold-light); }
+.contact .script { color: var(--gold-light); }
+.contact h2 { font-size: clamp(1.8rem, 6vw, 2.8rem); text-transform: uppercase; letter-spacing: .05em; margin: 4px 0 16px; }
+.contact__lead { max-width: 52ch; margin: 0 auto 30px; color: rgba(255, 253, 249, .78); }
+.contact .btns { justify-content: center; }
+.contact__list { list-style: none; display: grid; gap: 1px; max-width: 760px; margin: 40px auto 0; background: rgba(227, 199, 143, .22); border: 1px solid rgba(227, 199, 143, .22); text-align: left; }
+.contact__list li { background: var(--night); padding: 18px 18px; display: flex; gap: 14px; align-items: flex-start; }
+.contact__list .icon { color: var(--gold-light); margin-top: 3px; width: 1.25em; height: 1.25em; }
+.contact__list .caps { display: block; color: rgba(255, 253, 249, .6); font-size: .64rem; margin-bottom: 2px; }
+.contact__list a[href^="tel"] { white-space: nowrap; }
+.contact__list a { color: var(--white); text-decoration-color: rgba(227, 199, 143, .55); text-underline-offset: 4px; }
+.contact__list a:hover { color: var(--gold-light); }
+.contact__note { margin: 28px auto 0; max-width: 56ch; color: rgba(255, 253, 249, .7); font-size: .98rem; }
+
+.footer { background: #1a1b2c; color: rgba(255, 253, 249, .6); text-align: center; padding: 40px 20px 92px; font-size: .95rem; }
+.footer__name { font-family: var(--font-display); color: var(--white); letter-spacing: .2em; text-transform: uppercase; margin: 0; }
+.footer__sub { word-spacing: .14em; font-family: var(--font-script); color: var(--gold-light); font-size: 1.9rem; line-height: 1; margin: 2px 0 18px; }
+.footer__links { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; list-style: none; margin: 0 0 18px; }
+.footer__links a { color: rgba(255, 253, 249, .8); text-decoration: none; padding: 6px 2px; display: inline-block; }
+.footer__links a:hover { color: var(--gold-light); }
+.footer p { margin: 0; }
+
+/* "Demo preview" badge: always visible, never blocks taps underneath */
+.demo-badge {
+  position: fixed; right: 12px; bottom: 12px; z-index: 40;
+  display: flex; align-items: center; gap: 7px;
+  margin: 0; padding: 6px 13px;
+  border: 1px solid rgba(184, 137, 63, .6);
+  background: rgba(33, 35, 56, .88); color: var(--gold-light);
+  font: 600 .72rem/1.2 var(--font-body); letter-spacing: .14em; text-transform: uppercase;
+  box-shadow: 0 8px 20px -10px rgba(0, 0, 0, .6);
+  pointer-events: none;
+}
+.demo-badge::before { content: ""; width: 6px; height: 6px; background: var(--gold-light); transform: rotate(45deg); }
+
+/* ---------- Tablet ---------- */
+@media (min-width: 600px) {
+  .quotes { columns: 2; }
+  .ways { gap: 16px; }
+  .way .kartica { left: 12px; right: 12px; bottom: 12px; padding: 16px 12px; }
+  .way h3 { font-size: 1.1rem; }
+  .offers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .program__facts { grid-template-columns: repeat(3, 1fr); }
+  .pillars { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .contact__list { grid-template-columns: 1fr 1fr; }
+  .cards3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .event__lists { grid-template-columns: 1fr 1fr; }
+}
+
+/* ---------- Desktop ---------- */
+@media (min-width: 900px) {
+  :root { --nav-h: 76px; }
+  .section { padding: 112px 0; }
+  .nav { padding: 0 max(24px, calc((100vw - var(--wrap)) / 2 + 20px)); }
+  .nav__logo-name { font-size: 1.12rem; }
+  .nav__menu { display: flex; align-items: center; gap: 2px; }
+  .nav__menu a {
+    position: relative; padding: 10px 12px; text-decoration: none;
+    font-size: .78rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
+  }
+  .nav__menu a:not(.nav__cta)::after {
+    content: ""; position: absolute; left: 12px; right: 12px; bottom: 4px; height: 1px;
+    background: var(--gold); transform: scaleX(0); transition: transform .25s;
+  }
+  .nav__menu a:hover::after, .nav__menu a[aria-current="page"]::after { transform: scaleX(1); }
+  .nav__menu a[aria-current="page"] { color: var(--gold-deep); }
+  .nav__menu .nav__cta { margin-left: 12px; border: 1px solid var(--ink); padding: 11px 18px; }
+  .nav__menu .nav__cta:hover { background: var(--ink); color: var(--white); }
+  .nav__toggle { display: none; }
+
+  .hero { justify-content: center; padding: calc(var(--nav-h) + 40px) 0 60px; }
+  .hero__media img { object-position: 50% 38%; }
+  .hero__media::after {
+    background:
+      linear-gradient(to bottom, rgba(250, 246, 239, .5), rgba(250, 246, 239, 0) 18%),
+      linear-gradient(to right, rgba(250, 246, 239, .35), rgba(250, 246, 239, 0) 40%);
+  }
+  .hero__card { margin: 0 0 0 max(3vw, calc((100vw - var(--wrap)) / 2)); max-width: 400px; padding: 34px 28px 30px; }
+  .hero__card::before { height: 30vh; }
+  .hero__name { font-size: 3.6rem; }
+  .hero h1 { font-size: 2.2rem; }
+
+  .page-head { min-height: 82vh; align-items: center; padding-bottom: 60px; }
+  .page-head .kartica { padding: 40px 44px; }
+  .page-head .script { font-size: 5.4rem; }
+
+  .about { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 88px; align-items: center; }
+  .about__media { margin: 0; }
+  .about__media .kartica { left: auto; right: -56px; bottom: 40px; width: 300px; text-align: left; }
+
+  .ways { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+  .way:nth-child(even) { margin-top: 48px; }
+  .way .kartica { left: 14px; right: 14px; bottom: 14px; padding: 18px 14px; }
+  .way h3 { font-size: 1.15rem; }
+  .way__more { display: block; margin: 6px 0 0; color: var(--gold-deep); font-size: .62rem; }
+
+  .flows { grid-template-columns: 1fr 1fr; gap: 72px; }
+
+  .hiska { grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: 72px; align-items: center; }
+  .hiska__frames { gap: 14px; }
+  .hiska__frames img:nth-child(2) { margin-top: 64px; }
+
+  .odzivi { padding: 120px 0; }
+  .quotes { columns: 3; column-gap: 20px; }
+  .quote { margin-bottom: 20px; }
+
+  .menu-cols { grid-template-columns: 1fr 1fr; gap: 72px; }
+  .offers { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+  .split { grid-template-columns: 1fr 1fr; gap: 80px; }
+  .split--flip .split__media { order: 2; }
+
+  .program { padding: 56px 64px; }
+
+  .event { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  .event__media img { aspect-ratio: auto; min-height: 100%; }
+  .event__body { padding: 44px 48px; }
+
+  .cards3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+  .contact { padding: 120px 0 96px; }
+  .contact__list li { padding: 22px 24px; }
+  .footer { padding-bottom: 48px; }
+}
+
+/* Landscape phones: the hero card sits to the side and stays compact */
+@media (orientation: landscape) and (max-height: 560px) {
+  .hero { justify-content: center; padding: calc(var(--nav-h) + 10px) 0 14px; }
+  .hero__media img { object-position: 50% 34%; }
+  .hero__card { margin: 0 0 0 24px; max-width: 360px; padding: 16px 18px; }
+  .hero__card::before { display: none; }
+  .hero__name { font-size: 2.2rem; }
+  .hero h1 { font-size: 1.3rem; }
+  .hero__sub { margin: 6px auto 10px; font-size: .9rem; }
+  .hero__meta { display: none; }
+  .hero .btn { min-height: 44px; padding: 10px 14px; }
+  .page-head { min-height: 100vh; min-height: 100svh; align-items: center; justify-content: flex-end; padding: calc(var(--nav-h) + 10px) 24px 20px; }
+  .page-head .kartica { max-width: 440px; padding: 18px 20px; }
+  .page-head .script { font-size: 3rem; }
+}
+
+/* Small additions for the subpages */
+.statement { font-family: var(--font-display); font-size: 1.35rem; line-height: 1.45; color: var(--ink); margin: 0; padding-left: 20px; border-left: 1px solid var(--gold); }
+.program__sub { margin: 34px 0 0; }
+.instruments .caps { margin: 0 0 10px; color: var(--gold-deep); }
+.svc__name a { text-decoration-color: var(--gold); text-underline-offset: 4px; }
+.svc-note a, .ticks a, .card3 a:not(.btn) { color: var(--gold-deep); text-underline-offset: 3px; }
+
+/* Phones: the two hero buttons share one row so the card stays low and her face stays in view */
+@media (max-width: 599px), (orientation: landscape) and (max-height: 560px) {
+  .hero .btns { flex-wrap: nowrap; gap: 8px; }
+  .hero .btn { padding: 12px 12px; letter-spacing: .12em; font-size: .76rem; }
+}
+@media (max-width: 599px) and (max-height: 720px) {
+  .hero__card { padding: 18px 16px 16px; }
+  .hero__name { font-size: 2.5rem; }
+  .hero__sub { margin: 8px auto 12px; font-size: .95rem; }
+  .hero__meta { display: none; }
+}
+
+/* A dark photo behind the page header (Adoula): stronger cream veil for the menu, a more solid card */
+.page-head--dark .page-head__media::after {
+  background: linear-gradient(to bottom, rgba(250, 246, 239, .9), rgba(250, 246, 239, .35) 14%, rgba(250, 246, 239, 0) 30%);
+}
+.page-head--dark .kartica { background: rgba(250, 246, 239, .9); }
