@@ -3,6 +3,8 @@
 _source/
 TRACKER.md
 CLAUDE.md
+KANDIDATI.md
+kandidati.html
 fetch.sh
 *.part.mp4
 .DS_Store
