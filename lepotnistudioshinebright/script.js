@@ -82,9 +82,11 @@
   var stage = document.getElementById('stage');
   var picker = document.getElementById('picker');
   var nameEl = document.getElementById('lookName');
-  var currentCat = 'chrome';
+  var currentCat = 'french';
   if (stage && picker && nameEl) {
     var swatches = picker.querySelectorAll('.swatch');
+    var pressed = picker.querySelector('.swatch[aria-pressed="true"]');
+    if (pressed) currentCat = pressed.getAttribute('data-cat');
     var photos = {};
     var firstPhoto = stage.querySelector('.stage__img');
     photos[firstPhoto.getAttribute('data-look')] = firstPhoto;
