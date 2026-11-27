@@ -64,7 +64,7 @@
   // First-screen loop: plays muted on its own. iPhones in Low Power Mode and some in-app browsers
   // (Instagram, Facebook) block autoplay; then it starts on the first touch instead.
   // It stays still for people who prefer reduced motion.
-  var hero = document.querySelector('.poster__video');
+  var hero = document.querySelector('.hero__video');
   if (hero) {
     hero.disablePictureInPicture = true;
     hero.disableRemotePlayback = true;
@@ -83,7 +83,7 @@
     // The still image on top fades out only once frames are really moving
     // (also covers a video that started before this script ran)
     var revealVideo = function () {
-      if (!hero.paused && hero.currentTime > start) hero.parentNode.classList.add('poster__media--playing');
+      if (!hero.paused && hero.currentTime > start) hero.parentNode.classList.add('hero__media--playing');
     };
     hero.addEventListener('playing', revealVideo);
     hero.addEventListener('timeupdate', revealVideo);
@@ -172,7 +172,7 @@
     btn.addEventListener('click', function () {
       var card = strip && strip.firstElementChild;
       if (!card || btn.getAttribute('aria-disabled') === 'true') return;
-      var step = card.getBoundingClientRect().width + 14;
+      var step = card.getBoundingClientRect().width + (parseFloat(getComputedStyle(strip).columnGap) || 12);
       strip.scrollBy({ left: step * Number(btn.getAttribute('data-scroll')), behavior: reduceMotion.matches ? 'auto' : 'smooth' });
     });
   });
