@@ -299,7 +299,7 @@ h1 span { display: block; }
 .film video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: inherit; object-fit: cover; background: #1c1613; }
 .strip {
   display: flex; gap: 14px; margin-top: 44px; padding: 0 var(--gut) 6px;
-  overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gut);
+  overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; scroll-padding-inline: var(--gut);
   -webkit-overflow-scrolling: touch; scrollbar-width: none;
 }
 .strip::-webkit-scrollbar { display: none; }

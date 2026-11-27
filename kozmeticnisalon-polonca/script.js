@@ -173,7 +173,7 @@
     }, { rootMargin: '0px 0px -12% 0px', threshold: 0.15 });
     each(lit, function (el) { lamps.observe(el); });
 
-    var items = document.querySelectorAll('.credo__big, .credo__text, .sec .tag, .sec h2, .lead, .dial, .nege__panels, .extra, .often, .item, .services__foot, .film, .shot, .about__photo, .about__text > p, .oks li, .tips, .shower, .card');
+    var items = document.querySelectorAll('.credo__big, .credo__text, .sec .tag, .sec h2, .lead, .dial, .nege__panels, .extra, .often, .item, .services__foot, .film, .strip, .about__photo, .about__text > p, .oks li, .tips, .shower, .card');
     var seen = new IntersectionObserver(function (entries) {
       each(entries, function (entry) {
         if (!entry.isIntersecting) return;
