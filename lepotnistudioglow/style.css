@@ -626,10 +626,14 @@ html:not(.js) .seasons { display: none; }
   .menu a.menu__write:hover { background: #5a1060; transform: translateY(-1px); }
 
   /* The sentence starts top-left, passes the photo and ends bottom-right */
-  .hero { padding: calc(var(--bar) + clamp(22px, 5vh, 64px)) 0 clamp(70px, 11vh, 130px); }
+  /* The hero fills the whole first screen, so nothing of the next section shows under it */
+  .hero {
+    display: grid; align-content: center; min-height: 100vh; min-height: 100svh;
+    padding: calc(var(--bar) + clamp(22px, 5vh, 64px)) 0 clamp(70px, 11vh, 130px);
+  }
   .hero__in {
-    --fs: clamp(340px, min(34vw, 100vh - var(--bar) - 210px), 500px);
-    --fs: clamp(340px, min(34vw, 100svh - var(--bar) - 210px), 500px);
+    --fs: clamp(340px, min(37vw, 100vh - var(--bar) - 250px), 560px);
+    --fs: clamp(340px, min(37vw, 100svh - var(--bar) - 250px), 560px);
     --gap: 48px;
     --h1: clamp(3rem, 5vw, 4.5rem);
     display: grid; grid-template-columns: minmax(0, 1fr) var(--fs) minmax(0, 1fr); grid-template-rows: 1fr auto;
